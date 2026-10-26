@@ -18,29 +18,38 @@
       color: #111111;
       min-height: 100vh;
       display: flex;
-      justify-content: center;
-      padding: 80px 24px 40px;
+      flex-direction: column;
     }
 
-    .container {
+    header {
       width: 100%;
-      max-width: 560px;
-      display: flex;
-      flex-direction: column;
-      min-height: calc(100vh - 120px);
+      text-align: center;
+      padding-top: 12vh;
     }
 
     h1 {
-      font-size: 40px;
+      font-size: 64px;
       font-weight: 600;
-      letter-spacing: 0.3px;
-      margin-bottom: 36px;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+    }
+
+    nav {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      width: 100%;
     }
 
     .nav-list {
       display: flex;
       flex-direction: column;
       gap: 12px;
+      width: 100%;
+      max-width: 400px;
     }
 
     .nav-item {
@@ -75,25 +84,37 @@
     }
 
     footer {
-      margin-top: auto;
-      padding-top: 48px;
+      width: 100%;
+      text-align: left;
+      padding: 0 24px 24px;
       font-size: 13px;
       color: #aaaaaa;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 40px;
+      }
+      header {
+        padding-top: 8vh;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <header>
     <h1>zhangxinagrui's home</h1>
+  </header>
 
-    <nav class="nav-list">
+  <nav>
+    <div class="nav-list">
       <a class="nav-item" href="/blog/">
         <span class="label">博客 / Blog</span>
         <span class="arrow">→</span>
       </a>
-    </nav>
+    </div>
+  </nav>
 
-    <footer>© zhangxinagrui</footer>
-  </div>
+  <footer>© zhangxinagrui</footer>
 </body>
 </html>
