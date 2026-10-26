@@ -92,6 +92,7 @@
       bottom: 24px;
       width: 168px;
       height: auto;
+      color: #111111;
       pointer-events: none;
       z-index: 10;
     }
@@ -115,7 +116,7 @@
         padding: 24px 20px 12vh;
       }
       .cat {
-        width: 110px;
+        width: 112px;
         right: 14px;
         bottom: 14px;
       }
@@ -143,54 +144,36 @@
 
   <footer>© zhangxinagrui</footer>
 
-  <!-- 右下角：猫玩毛线球 logo（连贯剪影，非几何拼接） -->
-  <svg class="cat" viewBox="0 0 250 200" xmlns="http://www.w3.org/2000/svg"
-       aria-hidden="true">
-    <!-- 尾巴：从臀部绕出，一条完整的卷曲线 -->
-    <path d="M 52 162
-             C 30 166 12 152 12 132
-             C 12 114 26 106 38 116
-             C 44 121 42 129 35 127"
-          fill="none" stroke="#111111" stroke-width="12" stroke-linecap="round"/>
-
-    <!-- 猫的主体：头、耳、颈、背、臀、前胸、前腿，一条连贯路径 -->
-    <path d="M 88 32
-             C 96 24 104 24 110 30
-             L 120 14
-             Q 123 8 121 16
-             L 112 38
-             C 124 50 130 68 126 86
-             C 124 98 118 106 112 112
-             C 126 122 138 140 146 158
-             C 154 162 162 166 170 168
-             C 174 170 172 174 167 172
-             C 158 168 150 168 144 172
-             C 147 177 145 182 136 182
-             L 68 182
-             C 54 182 46 172 46 158
-             C 46 144 50 128 58 116
-             C 44 102 40 80 48 60
-             C 52 48 58 38 66 32
-             L 56 12
-             Q 53 6 57 14
-             L 76 30
-             C 80 32 84 32 88 32 Z"
-          fill="#111111"/>
-
-    <!-- 毛线球：实心圆 -->
-    <circle cx="198" cy="166" r="24" fill="#111111"/>
-
-    <!-- 毛线缠绕纹路：用白色弧线表现 -->
-    <g fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round">
-      <path d="M 178 154 Q 198 166 218 154"/>
-      <path d="M 178 178 Q 198 166 218 178"/>
-      <path d="M 186 146 Q 200 166 186 186"/>
-      <path d="M 210 146 Q 196 166 210 186"/>
-    </g>
-
-    <!-- 甩出去的线头 -->
-    <path d="M 222 166 Q 234 162 242 152"
-          fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round"/>
+  <!-- 右下角：线条猫玩毛球 -->
+  <svg class="cat" viewBox="0 0 140 100" fill="none"
+       xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- 猫身体轮廓（蹲坐） -->
+    <path d="M22 88 C18 66 24 50 42 44 C48 42 54 42 60 44 C68 47 72 54 72 62 C72 74 66 84 60 88"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <!-- 头 -->
+    <circle cx="52" cy="34" r="14" stroke="currentColor" stroke-width="2"/>
+    <!-- 两只耳朵 -->
+    <path d="M42 24 L40 12 L50 20" stroke="currentColor" stroke-width="2"
+          stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M62 24 L64 12 L54 20" stroke="currentColor" stroke-width="2"
+          stroke-linejoin="round" stroke-linecap="round"/>
+    <!-- 尾巴 -->
+    <path d="M22 82 C8 80 6 66 16 60" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round"/>
+    <!-- 伸出的前爪 -->
+    <path d="M66 72 C78 70 87 73 92 77" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round"/>
+    <!-- 毛球 -->
+    <circle cx="106" cy="80" r="11" stroke="currentColor" stroke-width="2"/>
+    <!-- 毛球上的缠绕线 -->
+    <path d="M97 74 C103 80 109 80 115 74" stroke="currentColor" stroke-width="1.5"
+          stroke-linecap="round"/>
+    <path d="M97 86 C103 80 109 80 115 86" stroke="currentColor" stroke-width="1.5"
+          stroke-linecap="round"/>
+    <!-- 毛球外伸的三根线头 -->
+    <path d="M106 69 L106 64" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M118 76 L123 73" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M94 84 L89 87" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
   </svg>
 </body>
 </html>
