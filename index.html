@@ -1,9 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-  <title>我的主页</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>zhangxinagrui's home</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                   "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: #ffffff;
+      color: #111111;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 80px 24px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 560px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: #666666;
+      margin-bottom: 36px;
+    }
+
+    .nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      border: 1px solid #d9d9d9;
+      border-radius: 6px;
+      text-decoration: none;
+      color: #111111;
+      background: #ffffff;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .nav-item:hover {
+      border-color: #111111;
+      background: #fafafa;
+    }
+
+    .nav-item .label {
+      font-size: 16px;
+    }
+
+    .nav-item .arrow {
+      font-size: 14px;
+      color: #999999;
+    }
+
+    .nav-item:hover .arrow {
+      color: #111111;
+    }
+
+    footer {
+      margin-top: 48px;
+      font-size: 13px;
+      color: #aaaaaa;
+    }
+  </style>
 </head>
 <body>
-  <h1>你好，这是我的个人主页</h1>
+  <div class="container">
+    <h1>zhangxinagrui's home</h1>
+    <p class="subtitle">欢迎来到我的主页</p>
+
+    <nav class="nav-list">
+      <a class="nav-item" href="/blog/">
+        <span class="label">博客 / Blog</span>
+        <span class="arrow">→</span>
+      </a>
+    </nav>
+
+    <footer>© zhangxinagrui</footer>
+  </div>
 </body>
 </html>
