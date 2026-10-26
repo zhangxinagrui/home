@@ -12,31 +12,28 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
-                   "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-family: "Yuanti SC", "YouYuan", "Hiragino Maru Gothic ProN",
+                   "PingFang SC", "Microsoft YaHei", sans-serif;
       background: #ffffff;
       color: #111111;
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      padding: 80px 24px;
+      padding: 80px 24px 40px;
     }
 
     .container {
       width: 100%;
       max-width: 560px;
+      display: flex;
+      flex-direction: column;
+      min-height: calc(100vh - 120px);
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 40px;
       font-weight: 600;
-      letter-spacing: 0.2px;
-      margin-bottom: 12px;
-    }
-
-    .subtitle {
-      font-size: 15px;
-      color: #666666;
+      letter-spacing: 0.3px;
       margin-bottom: 36px;
     }
 
@@ -78,7 +75,8 @@
     }
 
     footer {
-      margin-top: 48px;
+      margin-top: auto;
+      padding-top: 48px;
       font-size: 13px;
       color: #aaaaaa;
     }
@@ -87,7 +85,6 @@
 <body>
   <div class="container">
     <h1>zhangxinagrui's home</h1>
-    <p class="subtitle">欢迎来到我的主页</p>
 
     <nav class="nav-list">
       <a class="nav-item" href="/blog/">
