@@ -24,7 +24,7 @@
     header {
       width: 100%;
       text-align: center;
-      padding-top: 12vh;
+      padding-top: 16vh;
     }
 
     h1 {
@@ -39,7 +39,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px 24px 14vh;
+      padding: 24px 24px 18vh;
       width: 100%;
     }
 
@@ -87,13 +87,13 @@
       color: #111111;
     }
 
-    /* 页面右下角的实心黑猫 */
+    /* 页面右下角的黑猫 logo */
     .cat {
       position: fixed;
       right: 28px;
       bottom: 28px;
-      width: 110px;
-      height: 110px;
+      width: 150px;
+      height: auto;
       pointer-events: none;
       z-index: 10;
     }
@@ -111,14 +111,13 @@
         font-size: 40px;
       }
       header {
-        padding-top: 8vh;
+        padding-top: 12vh;
       }
       nav {
-        padding: 24px 20px 10vh;
+        padding: 24px 20px 14vh;
       }
       .cat {
-        width: 80px;
-        height: 80px;
+        width: 96px;
         right: 16px;
         bottom: 16px;
       }
@@ -146,20 +145,51 @@
 
   <footer>© zhangxinagrui</footer>
 
-  <!-- 右下角实心黑猫 -->
-  <svg class="cat" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg"
+  <!-- 右下角：黑猫玩毛线球 logo -->
+  <svg class="cat" viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg"
        aria-hidden="true">
-    <!-- 尾巴：从身体左侧绕出，圆润收尾 -->
-    <path d="M 40 120 C 15 120 12 98 28 92 C 36 89 42 95 40 102"
-          fill="none" stroke="#111111" stroke-width="9" stroke-linecap="round"/>
-    <!-- 身体：坐姿的椭圆 -->
-    <ellipse cx="70" cy="108" rx="38" ry="28" fill="#111111"/>
-    <!-- 头：圆润的实心圆 -->
-    <circle cx="70" cy="56" r="30" fill="#111111"/>
+    <!-- 尾巴：从身体左侧卷起 -->
+    <path d="M 42 170 C 8 164 6 126 26 114"
+          fill="none" stroke="#111111" stroke-width="13" stroke-linecap="round"/>
+
+    <!-- 身体：坐姿梨形 -->
+    <path d="M 52 102
+             C 28 118 26 162 44 178
+             L 112 178
+             C 130 162 128 118 104 102 Z"
+          fill="#111111"/>
+
     <!-- 左耳 -->
-    <path d="M 47 36 L 41 12 L 63 30 Z" fill="#111111"/>
+    <path d="M 46 45 L 41 13 Q 40 8 45 11 L 68 31 Z" fill="#111111"/>
+
     <!-- 右耳 -->
-    <path d="M 93 36 L 99 12 L 77 30 Z" fill="#111111"/>
+    <path d="M 110 45 L 115 13 Q 116 8 111 11 L 88 31 Z" fill="#111111"/>
+
+    <!-- 头 -->
+    <circle cx="78" cy="70" r="44" fill="#111111"/>
+
+    <!-- 伸向毛线球的前爪 -->
+    <ellipse cx="126" cy="158" rx="16" ry="10"
+             transform="rotate(-18 126 158)" fill="#111111"/>
+
+    <!-- 眼睛 -->
+    <ellipse cx="66" cy="66" rx="3.5" ry="5" fill="#ffffff"/>
+    <ellipse cx="90" cy="66" rx="3.5" ry="5" fill="#ffffff"/>
+
+    <!-- 毛线球：实心黑圆 -->
+    <circle cx="170" cy="162" r="26" fill="#111111"/>
+
+    <!-- 毛线缠绕纹路 -->
+    <g fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round">
+      <path d="M 150 148 Q 170 160 190 148"/>
+      <path d="M 150 176 Q 170 164 190 176"/>
+      <path d="M 158 142 Q 172 162 158 182"/>
+      <path d="M 182 142 Q 168 162 182 182"/>
+    </g>
+
+    <!-- 毛线球线头 -->
+    <path d="M 196 162 Q 208 160 214 152"
+          fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round"/>
   </svg>
 </body>
 </html>
