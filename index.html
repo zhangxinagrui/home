@@ -14,82 +14,42 @@
     body {
       font-family: "Yuanti SC", "YouYuan", "Hiragino Maru Gothic ProN",
                    "PingFang SC", "Microsoft YaHei", sans-serif;
-      background: #000000;
-      color: #ffffff;
+      background: #ffffff;
+      color: #111111;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
     }
 
-    /* 泡泡层：固定在底层，会被框的黑色背景遮挡 */
-    .bubble-container {
-      position: fixed;
-      inset: 0;
-      overflow: hidden;
-      z-index: 0;
-      pointer-events: none;
+    header {
+      width: 100%;
+      text-align: center;
+      padding-top: 12vh;
     }
 
-    .bubble {
-      position: absolute;
-      bottom: -100px;
-      border-radius: 50%;
-      background: #ffffff;
-      animation-name: float-up;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-      will-change: transform;
+    h1 {
+      font-size: 64px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
     }
 
-    @keyframes float-up {
-      from { transform: translateY(0); }
-      to   { transform: translateY(calc(-100vh - 200px)); }
-    }
-
-    /* 内容层：在泡泡之上，位置保持原来的居中垂直排列 */
-    main {
+    nav {
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 24px;
-      padding: 24px;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* 标题框：黑底白字，白色细边框让框可见 */
-    .title-box {
-      background: #000000;
-      border: 1px solid #555555;
-      border-radius: 14px;
-      padding: 28px 48px;
-      max-width: 90vw;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: clamp(30px, 6vw, 64px);
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      line-height: 1.15;
-      white-space: nowrap;
-      color: #ffffff;
-    }
-
-    /* 选项大框：黑底白字，不透明背景遮挡泡泡 */
-    .nav-box {
+      padding: 24px 24px 14vh;
       width: 100%;
-      max-width: 480px;
-      padding: 20px;
-      background: #000000;
-      border: 1px solid #555555;
-      border-radius: 14px;
+    }
+
+    .nav-list {
       display: flex;
       flex-direction: column;
       gap: 12px;
+      width: 100%;
+      max-width: 400px;
     }
 
     .nav-item {
@@ -97,27 +57,29 @@
       align-items: center;
       justify-content: space-between;
       padding: 14px 18px;
-      border: 1px solid #444444;
+      border: 1px solid #d9d9d9;
       border-radius: 6px;
       text-decoration: none;
-      color: #ffffff;
-      background: #000000;
-      transition: border-color 0.2s ease, background 0.2s ease;
+      color: #111111;
+      background: #ffffff;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     }
 
+    /* 悬停时卡片内部变黑底白字 */
     .nav-item:hover {
-      border-color: #ffffff;
       background: #111111;
+      border-color: #111111;
+      color: #ffffff;
     }
 
     .nav-item .label {
       font-size: 16px;
-      color: #ffffff;
     }
 
     .nav-item .arrow {
       font-size: 14px;
-      color: #888888;
+      color: #999999;
+      transition: color 0.2s ease;
     }
 
     .nav-item:hover .arrow {
@@ -129,74 +91,36 @@
       text-align: left;
       padding: 0 24px 24px;
       font-size: 13px;
-      color: #777777;
-      position: relative;
-      z-index: 1;
+      color: #aaaaaa;
     }
 
     @media (max-width: 600px) {
-      main {
-        gap: 18px;
-        padding: 20px;
+      h1 {
+        font-size: 40px;
       }
-      .title-box {
-        padding: 20px 24px;
+      header {
+        padding-top: 8vh;
       }
-      .nav-box {
-        padding: 16px;
+      nav {
+        padding: 24px 24px 10vh;
       }
     }
   </style>
 </head>
 <body>
-  <!-- 泡泡层：在底层 -->
-  <div class="bubble-container" aria-hidden="true"></div>
+  <header>
+    <h1>zhangxinagrui's home</h1>
+  </header>
 
-  <main>
-    <div class="title-box">
-      <h1>zhangxinagrui's home</h1>
-    </div>
-
-    <div class="nav-box">
+  <nav>
+    <div class="nav-list">
       <a class="nav-item" href="/blog/">
         <span class="label">博客 / Blog</span>
         <span class="arrow">→</span>
       </a>
-
-      <a class="nav-item" href="/relaxation/">
-        <span class="label">放松 / Relaxation</span>
-        <span class="arrow">→</span>
-      </a>
     </div>
-  </main>
+  </nav>
 
   <footer>© zhangxinagrui</footer>
-
-  <script>
-    (function () {
-      var container = document.querySelector('.bubble-container');
-      var COUNT = 45;
-
-      for (var i = 0; i < COUNT; i++) {
-        var b = document.createElement('div');
-        b.className = 'bubble';
-
-        var size = 8 + Math.random() * 30;          // 8–38px
-        var duration = 9 + Math.random() * 16;      // 9–25s
-        var delay = -Math.random() * 25;            // 负延迟，错开出发
-        var left = Math.random() * 100;             // 0–100%
-        var opacity = 0.25 + Math.random() * 0.55;  // 0.25–0.8
-
-        b.style.width = size + 'px';
-        b.style.height = size + 'px';
-        b.style.left = left + '%';
-        b.style.opacity = opacity;
-        b.style.animationDuration = duration + 's';
-        b.style.animationDelay = delay + 's';
-
-        container.appendChild(b);
-      }
-    })();
-  </script>
 </body>
 </html>
