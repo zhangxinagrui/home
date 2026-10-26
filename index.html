@@ -37,19 +37,23 @@
     nav {
       flex: 1;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 24px 24px 14vh;
       width: 100%;
     }
 
-    .nav-list {
+    /* 包住所有选项的大框 */
+    .nav-box {
+      width: 100%;
+      max-width: 480px;
+      padding: 20px;
+      border: 1px solid #cfcfcf;
+      border-radius: 14px;
+      background: #ffffff;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      width: 100%;
-      max-width: 400px;
     }
 
     .nav-item {
@@ -83,31 +87,15 @@
       color: #111111;
     }
 
-    /* 大框：/relaxation */
-    .nav-item--large {
-      position: relative;
-      display: block;
-      min-height: 150px;
-      padding: 20px 22px;
-      overflow: hidden;
-    }
-
-    .nav-item--large .label {
-      font-size: 18px;
-    }
-
+    /* 页面右下角的实心黑猫 */
     .cat {
-      position: absolute;
-      right: 12px;
-      bottom: 6px;
-      width: 132px;
-      height: auto;
-      color: #111111;
-      transition: transform 0.35s ease;
-    }
-
-    .nav-item--large:hover .cat {
-      transform: translateX(-5px) rotate(-3deg);
+      position: fixed;
+      right: 28px;
+      bottom: 28px;
+      width: 110px;
+      height: 110px;
+      pointer-events: none;
+      z-index: 10;
     }
 
     footer {
@@ -126,15 +114,13 @@
         padding-top: 8vh;
       }
       nav {
-        padding: 24px 24px 10vh;
-      }
-      .nav-item--large {
-        min-height: 130px;
+        padding: 24px 20px 10vh;
       }
       .cat {
-        width: 108px;
-        right: 8px;
-        bottom: 4px;
+        width: 80px;
+        height: 80px;
+        right: 16px;
+        bottom: 16px;
       }
     }
   </style>
@@ -145,50 +131,35 @@
   </header>
 
   <nav>
-    <div class="nav-list">
+    <div class="nav-box">
       <a class="nav-item" href="/blog/">
         <span class="label">博客 / Blog</span>
         <span class="arrow">→</span>
       </a>
 
-      <a class="nav-item nav-item--large" href="/relaxation/">
+      <a class="nav-item" href="/relaxation/">
         <span class="label">放松 / Relaxation</span>
-
-        <!-- 简约黑白：猫玩毛球 -->
-        <svg class="cat" viewBox="0 0 140 100" fill="none"
-             xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <!-- 猫身体轮廓（蹲坐） -->
-          <path d="M22 88 C18 66 24 50 42 44 C48 42 54 42 60 44 C68 47 72 54 72 62 C72 74 66 84 60 88"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <!-- 头 -->
-          <circle cx="52" cy="34" r="14" stroke="currentColor" stroke-width="2"/>
-          <!-- 两只耳朵 -->
-          <path d="M42 24 L40 12 L50 20" stroke="currentColor" stroke-width="2"
-                stroke-linejoin="round" stroke-linecap="round"/>
-          <path d="M62 24 L64 12 L54 20" stroke="currentColor" stroke-width="2"
-                stroke-linejoin="round" stroke-linecap="round"/>
-          <!-- 尾巴 -->
-          <path d="M22 82 C8 80 6 66 16 60" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round"/>
-          <!-- 伸出的前爪 -->
-          <path d="M66 72 C78 70 87 73 92 77" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round"/>
-          <!-- 毛球 -->
-          <circle cx="106" cy="80" r="11" stroke="currentColor" stroke-width="2"/>
-          <!-- 毛球上的缠绕线 -->
-          <path d="M97 74 C103 80 109 80 115 74" stroke="currentColor" stroke-width="1.5"
-                stroke-linecap="round"/>
-          <path d="M97 86 C103 80 109 80 115 86" stroke="currentColor" stroke-width="1.5"
-                stroke-linecap="round"/>
-          <!-- 毛球外伸的三根线头 -->
-          <path d="M106 69 L106 64" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M118 76 L123 73" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M94 84 L89 87" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
+        <span class="arrow">→</span>
       </a>
     </div>
   </nav>
 
   <footer>© zhangxinagrui</footer>
+
+  <!-- 右下角实心黑猫 -->
+  <svg class="cat" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg"
+       aria-hidden="true">
+    <!-- 尾巴：从身体左侧绕出，圆润收尾 -->
+    <path d="M 40 120 C 15 120 12 98 28 92 C 36 89 42 95 40 102"
+          fill="none" stroke="#111111" stroke-width="9" stroke-linecap="round"/>
+    <!-- 身体：坐姿的椭圆 -->
+    <ellipse cx="70" cy="108" rx="38" ry="28" fill="#111111"/>
+    <!-- 头：圆润的实心圆 -->
+    <circle cx="70" cy="56" r="30" fill="#111111"/>
+    <!-- 左耳 -->
+    <path d="M 47 36 L 41 12 L 63 30 Z" fill="#111111"/>
+    <!-- 右耳 -->
+    <path d="M 93 36 L 99 12 L 77 30 Z" fill="#111111"/>
+  </svg>
 </body>
 </html>
