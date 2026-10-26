@@ -15,14 +15,14 @@
       font-family: "Yuanti SC", "YouYuan", "Hiragino Maru Gothic ProN",
                    "PingFang SC", "Microsoft YaHei", sans-serif;
       background: #000000;
-      color: #111111;
+      color: #ffffff;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       overflow: hidden;
     }
 
-    /* 泡泡层：固定在底层，被框遮挡 */
+    /* 泡泡层：固定在底层，会被框的黑色背景遮挡 */
     .bubble-container {
       position: fixed;
       inset: 0;
@@ -47,7 +47,7 @@
       to   { transform: translateY(calc(-100vh - 200px)); }
     }
 
-    /* 内容层：在泡泡之上 */
+    /* 内容层：在泡泡之上，位置保持原来的居中垂直排列 */
     main {
       flex: 1;
       display: flex;
@@ -60,9 +60,10 @@
       z-index: 1;
     }
 
-    /* 标题框 */
+    /* 标题框：黑底白字，白色细边框让框可见 */
     .title-box {
-      background: #ffffff;
+      background: #000000;
+      border: 1px solid #555555;
       border-radius: 14px;
       padding: 28px 48px;
       max-width: 90vw;
@@ -75,14 +76,16 @@
       letter-spacing: 0.5px;
       line-height: 1.15;
       white-space: nowrap;
+      color: #ffffff;
     }
 
-    /* 选项大框 */
+    /* 选项大框：黑底白字，不透明背景遮挡泡泡 */
     .nav-box {
       width: 100%;
       max-width: 480px;
       padding: 20px;
-      background: #ffffff;
+      background: #000000;
+      border: 1px solid #555555;
       border-radius: 14px;
       display: flex;
       flex-direction: column;
@@ -94,30 +97,31 @@
       align-items: center;
       justify-content: space-between;
       padding: 14px 18px;
-      border: 1px solid #d9d9d9;
+      border: 1px solid #444444;
       border-radius: 6px;
       text-decoration: none;
-      color: #111111;
-      background: #ffffff;
+      color: #ffffff;
+      background: #000000;
       transition: border-color 0.2s ease, background 0.2s ease;
     }
 
     .nav-item:hover {
-      border-color: #111111;
-      background: #fafafa;
+      border-color: #ffffff;
+      background: #111111;
     }
 
     .nav-item .label {
       font-size: 16px;
+      color: #ffffff;
     }
 
     .nav-item .arrow {
       font-size: 14px;
-      color: #999999;
+      color: #888888;
     }
 
     .nav-item:hover .arrow {
-      color: #111111;
+      color: #ffffff;
     }
 
     footer {
@@ -145,7 +149,7 @@
   </style>
 </head>
 <body>
-  <!-- 泡泡层 -->
+  <!-- 泡泡层：在底层 -->
   <div class="bubble-container" aria-hidden="true"></div>
 
   <main>
