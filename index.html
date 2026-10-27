@@ -26,7 +26,7 @@
     header {
       width: 100%;
       text-align: center;
-      padding-top: 16vh;
+      padding-top: 20vh;   /* 标题再下移 */
       position: relative;
       z-index: 2;
     }
@@ -45,7 +45,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 24px 24px 16vh;
+      padding: 24px 24px 14vh;
       width: 100%;
       position: relative;
       z-index: 2;
@@ -101,11 +101,12 @@
       z-index: 2;
     }
 
+    /* 泡泡画布：放在内容后面，纯装饰，不与卡片交互 */
     #bubble-canvas {
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 3;
+      z-index: 1;
     }
 
     @media (max-width: 600px) {
@@ -113,7 +114,7 @@
         font-size: 40px;
       }
       header {
-        padding-top: 10vh;
+        padding-top: 12vh;
       }
       nav {
         padding: 24px 24px 10vh;
@@ -147,13 +148,10 @@
     (function () {
       const canvas = document.getElementById('bubble-canvas');
       const ctx = canvas.getContext('2d');
-      const cards = document.querySelectorAll('.nav-item');
       const bubbles = [];
       const MAX_BUBBLES = 150;
 
-      const FILL_COLOR    = 'rgba(255, 255, 255, 0.32)';
-      const OUTLINE_COLOR = 'rgba(255, 255, 255, 0.85)';
-      const LINE_WIDTH    = 1.5;
+      const FILL_COLOR = 'rgba(255, 255, 255, 0.32)';
 
       let W = 0, H = 0, dpr = 1;
 
@@ -182,22 +180,6 @@
         });
       }
 
-      function circleRectIntersect(cx, cy, r, rect) {
-        const nx = Math.max(rect.left, Math.min(cx, rect.right));
-        const ny = Math.max(rect.top,  Math.min(cy, rect.bottom));
-        const dx = cx - nx;
-        const dy = cy - ny;
-        return dx * dx + dy * dy < r * r;
-      }
-
-      function clipToRects(rects) {
-        ctx.beginPath();
-        for (const r of rects) {
-          ctx.rect(r.left, r.top, r.width, r.height);
-        }
-        ctx.clip();
-      }
-
       let lastSpawn = performance.now();
 
       function frame(now) {
@@ -215,44 +197,12 @@
           if (b.y + b.r < -20) bubbles.splice(i, 1);
         }
 
-        const rects = Array.from(cards, el => el.getBoundingClientRect());
-
-        // 1) 所有泡泡先画实心
+        // 只画实心圆，不检测卡片，不做任何挖空或轮廓
         ctx.fillStyle = FILL_COLOR;
         for (const b of bubbles) {
           ctx.beginPath();
           ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
           ctx.fill();
-        }
-
-        // 2) 找出与任意卡片矩形相交的泡泡
-        const hits = rects.length
-          ? bubbles.filter(b => rects.some(r => circleRectIntersect(b.x, b.y, b.r, r)))
-          : [];
-
-        if (hits.length) {
-          // 2a) 只挖空「圆 ∩ 卡片矩形」的区域，框外实心不动
-          ctx.save();
-          clipToRects(rects);
-          ctx.globalCompositeOperation = 'destination-out';
-          for (const b of hits) {
-            ctx.beginPath();
-            ctx.arc(b.x, b.y, b.r + LINE_WIDTH / 2, 0, Math.PI * 2);
-            ctx.fill();
-          }
-          ctx.restore();
-
-          // 2b) 在框内画圆弧轮廓（只显示圆在框内那一段弧）
-          ctx.save();
-          clipToRects(rects);
-          ctx.strokeStyle = OUTLINE_COLOR;
-          ctx.lineWidth = LINE_WIDTH;
-          for (const b of hits) {
-            ctx.beginPath();
-            ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
-            ctx.stroke();
-          }
-          ctx.restore();
         }
 
         requestAnimationFrame(frame);
