@@ -23,12 +23,17 @@
       overflow: hidden;
     }
 
-    header {
-      width: 100%;
-      text-align: center;
-      padding-top: 24vh;   /* 标题再下移 */
+    /* 标题 + 选项的整体容器：居中偏上 */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 24px 12vh; /* 底部留白，让整体重心偏上 */
       position: relative;
       z-index: 2;
+      width: 100%;
     }
 
     h1 {
@@ -37,18 +42,8 @@
       letter-spacing: 0.5px;
       line-height: 1.2;
       color: #f5f5f5;
-    }
-
-    nav {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 24px 24px 14vh;
-      width: 100%;
-      position: relative;
-      z-index: 2;
+      text-align: center;
+      margin-bottom: 28px; /* 标题与选项之间收紧 */
     }
 
     .nav-list {
@@ -101,7 +96,7 @@
       z-index: 2;
     }
 
-    /* 泡泡画布：放在内容后面，纯装饰，不与卡片交互 */
+    /* 泡泡画布：放在内容后面 */
     #bubble-canvas {
       position: fixed;
       inset: 0;
@@ -112,23 +107,18 @@
     @media (max-width: 600px) {
       h1 {
         font-size: 40px;
+        margin-bottom: 20px;
       }
-      header {
-        padding-top: 12vh;
-      }
-      nav {
-        padding: 24px 24px 10vh;
+      .main {
+        padding: 0 24px 8vh;
       }
     }
   </style>
 </head>
 <body>
-  <header>
+  <main class="main">
     <h1>zhangxinagrui's home</h1>
-  </header>
-
-  <nav>
-    <div class="nav-list">
+    <nav class="nav-list">
       <a class="nav-item" href="/blog/">
         <span class="label">博客 / Blog</span>
         <span class="arrow">→</span>
@@ -137,8 +127,8 @@
         <span class="label">放松 / Relaxation</span>
         <span class="arrow">→</span>
       </a>
-    </div>
-  </nav>
+    </nav>
+  </main>
 
   <footer>© zhangxinagrui</footer>
 
@@ -150,7 +140,6 @@
       const ctx = canvas.getContext('2d');
       const bubbles = [];
       const MAX_BUBBLES = 150;
-
       const FILL_COLOR = 'rgba(255, 255, 255, 0.32)';
 
       let W = 0, H = 0, dpr = 1;
@@ -197,7 +186,6 @@
           if (b.y + b.r < -20) bubbles.splice(i, 1);
         }
 
-        // 只画实心圆，不检测卡片，不做任何挖空或轮廓
         ctx.fillStyle = FILL_COLOR;
         for (const b of bubbles) {
           ctx.beginPath();
